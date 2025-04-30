@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function Home() {
-  console.log(process.env.MongoURL);
   const [name, setName] = useState ('')
   const [email, setEmail] = useState ('')
 
@@ -13,6 +12,7 @@ export default function Home() {
     try{
       const response = await axios.post('/api/users', {name, email})
     } catch (err) {
+      console.log(process.env.MongoURL);
       console.error(err);
     }
   }
