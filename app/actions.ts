@@ -66,18 +66,14 @@ export async function createUser({ email, name, password }: { email: string; nam
   }
 }
 
-export async function getGardensByUser({id} : {id: string }) {
+export async function getGardensByUser(id: string ) {
   try {
     const gardens = await prisma.garden.findMany({
         where:{
             ownerId: id,
         },
         include: {
-            _count: {
-                select: {
-                    plants: true,
-                },
-            },
+            plants: true,
         }
     });
     
@@ -125,5 +121,38 @@ export async function createGarden({ name, visibility, ownerId }: { name: string
     // Handle duplicate email error
     
     throw new Error('Failed to create garden');
+  }
+}
+
+export async function getGardenById(id: string ) {
+  try {
+    const garden = await prisma.garden.findUnique({
+        where:{
+            id
+        },
+        include: {
+            plants: true,
+        }
+    });
+    
+    return {response:"success",data: garden};
+  } catch (error) {
+    console.error('Error fetching garden:', error);
+    throw new Error('Failed to fetch garden');
+  }
+}
+
+export async function deleteGarden(id: string ) {
+  try {
+    const garden = await prisma.garden.delete({
+        where:{
+            id
+        },
+    });
+    
+    return {response:"success"};
+  } catch (error) {
+    console.error('Error deleting garden:', error);
+    throw new Error('Failed to delete garden');
   }
 }

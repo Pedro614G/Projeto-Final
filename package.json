@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/modal": "^2.2.16",
     "@nextui-org/react": "^2.6.11",
     "@prisma/client": "^6.8.2",
     "auth": "^1.2.3",

@@ -43,7 +43,7 @@ export default function Hortas() {
     }, [user]);
 
     const orderedGardens = () => {
-        const ordered = gardens.sort((a,b) => {return a._count.plants - b._count.plants})
+        const ordered = gardens.sort((a,b) => {return a.plants.length - b.plants.length})
 
         return ordered;
     }
@@ -101,7 +101,7 @@ export default function Hortas() {
                             return (
                                 <Link href={`gardens/${garden.id}`} key={index} className="bg-[#d9d9d9] w-2/3 px-6 h-[100px] py-4 justify-between justify-self-center flex flex-col"> 
                                     <p> {garden.name} </p> 
-                                    <p> Número de plantas: {garden._count.plants} </p> 
+                                    <p> Número de plantas: {garden.plants.length} </p> 
                                 </Link>
                             )
                         })}

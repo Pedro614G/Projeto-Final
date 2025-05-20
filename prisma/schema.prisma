@@ -26,7 +26,7 @@ model Garden {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   visibility  Boolean
-  owner       User      @relation(fields: [ownerId], references: [id])
+  owner       User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId     String    @db.ObjectId
   plants      Plant[]
 }
@@ -42,7 +42,7 @@ model Plant {
   sun         String
   water       String
   other       Atribute[]
-  garden      Garden    @relation(fields: [gardenId], references: [id])
+  garden      Garden    @relation(fields: [gardenId], references: [id], onDelete: Cascade)
   gardenId    String    @db.ObjectId
 }
 
@@ -50,6 +50,6 @@ model Atribute {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   information String[]
-  plant       Plant     @relation(fields: [plantId], references: [id])
+  plant       Plant     @relation(fields: [plantId], references: [id], onDelete: Cascade)
   plantId     String    @db.ObjectId
 }

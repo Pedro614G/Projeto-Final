@@ -21,6 +21,7 @@ export default function SignUp() {
     setPassword('')
 
     console.log("User created")
+    router.push("/auth/login")
   }
 
   return (
@@ -39,7 +40,7 @@ export default function SignUp() {
           <label className="block text-sm font-medium">Password</label>
           <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required></input>
         </div>
-        <button type="submit" className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-800">Log in</button>
+        <button type="submit" className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-800">Sign up</button>
       </form>
       <Button className="mt-4" onPress={() => router.push('/auth/login')}> Já tens conta? Entra agora </Button>
     </div>    
