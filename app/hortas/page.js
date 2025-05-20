@@ -56,7 +56,7 @@ export default function Hortas() {
         <div className="flex flex-col flex-1 w-screen mx-auto p-4 bg-[#d0f9e9]">
             {!loading ? (
                 <div className="flex flex-col md:flex-row mt-5 text-black">
-                    <Button className={`${!create ? "flex" : "hidden"}`} onPress={() => setCreate(true)}> Ora Ora </Button>
+                    <Button className={`${!create ? "flex" : "hidden"}`} onPress={() => setCreate(true)}> Nova horta </Button>
                     <form onSubmit={handleSubmit} className={`${create ? "" : "hidden"} w-1/4 space-y-4`}>
                             <div>
                             <label className="block text-sm font-medium">Nome da horta</label>
@@ -69,7 +69,8 @@ export default function Hortas() {
                                 <option value={false}> Privada </option>
                             </select>
                             </div>
-                            <button type="submit" className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-800">Log in</button>
+                            <button type="submit" className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-800">Criar horta</button>
+                            <Button onPress={() => setCreate(false)} className="w-full py-2 px-4 bg-red-600 text-white font-semibold rounded-md hover:bg-red-800">Cancelar</Button>
                         </form>
                 </div>
                 ) : (
