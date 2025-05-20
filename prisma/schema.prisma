@@ -15,17 +15,41 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  email     String @unique
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  email     String      @unique
   name      String
   password  String
   gardens   Garden[]
 }
 
 model Garden {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   visibility  Boolean
-  owner       User @relation(fields: [ownerId], references: [id])
-  ownerId     String @db.ObjectId
+  owner       User      @relation(fields: [ownerId], references: [id])
+  ownerId     String    @db.ObjectId
+  plants      Plant[]
+}
+
+model Plant {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  genus       String
+  planting    String
+  comments    String[]
+  habitat     String
+  uses        String[]
+  sun         String
+  water       String
+  other       Atribute[]
+  garden      Garden    @relation(fields: [gardenId], references: [id])
+  gardenId    String    @db.ObjectId
+}
+
+model Atribute {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  information String[]
+  plant       Plant     @relation(fields: [plantId], references: [id])
+  plantId     String    @db.ObjectId
 }

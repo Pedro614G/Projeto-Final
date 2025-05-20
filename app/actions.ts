@@ -2,7 +2,6 @@
 
 import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
-import { signIn, signOut } from "@/lib/auth";
 
 
 import bcrypt from "bcryptjs";
@@ -72,10 +71,17 @@ export async function getGardensByUser({id} : {id: string }) {
     const gardens = await prisma.garden.findMany({
         where:{
             ownerId: id,
+        },
+        include: {
+            _count: {
+                select: {
+                    plants: true,
+                },
+            },
         }
     });
     
-    return gardens;
+    return {response:"success",data: gardens};
   } catch (error) {
     console.error('Error fetching gardens:', error);
     throw new Error('Failed to fetch gardens');
@@ -115,6 +121,7 @@ export async function createGarden({ name, visibility, ownerId }: { name: string
     
     return garden;
   } catch (error: any) {
+    console.log(error)
     // Handle duplicate email error
     
     throw new Error('Failed to create garden');

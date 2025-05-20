@@ -36,7 +36,7 @@ const Nav = () => {
                 <Button className="bg-[#d9d9d9] h-[40px]" onPress={() => router.push('/')} > 
                     Home 
                 </Button>
-                <Button className="bg-[#d9d9d9] h-[40px]" onPress={() => {router.push('/hortas')}} > 
+                <Button className="bg-[#d9d9d9] h-[40px]" onPress={() => {router.push('/gardens')}} > 
                     Hortas 
                 </Button>
                 {status == "loading" && (
