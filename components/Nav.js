@@ -33,10 +33,10 @@ const Nav = () => {
                         <Image src="/images/plant.png" alt="Banner" width={75} height={75} />
                     </Link>
                 </div>
-                <Button className="bg-[#d9d9d9] h-[40px]" onPress={() => router.push('/')} > 
+                <Button className="bg-[#d9d9d9] h-[40px] hover:h-[45px] hover:w-[85px] transition-all" onPress={() => router.push('/')} > 
                     Home 
                 </Button>
-                <Button className="bg-[#d9d9d9] h-[40px]" onPress={() => {router.push('/gardens')}} > 
+                <Button className="bg-[#d9d9d9] h-[40px] hover:h-[45px] hover:w-[90px] transition-all" onPress={() => {router.push('/gardens')}} > 
                     Hortas 
                 </Button>
                 {status == "loading" && (
@@ -47,7 +47,7 @@ const Nav = () => {
                 )}
 
                 {status != "loading" && !user?.name && (
-                <Button className="flex font-comfortaa bg-[#d9d9d9] h-[40px]" onPress={() => router.push("/auth/login")}>
+                <Button className="flex font-comfortaa bg-[#d9d9d9] h-[40px] hover:h-[45px] hover:w-[95px] transition-all" onPress={() => router.push("/auth/login")}>
                     Sign In
                 </Button>
                 )}
